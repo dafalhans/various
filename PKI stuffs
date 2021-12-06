@@ -1,0 +1,6 @@
+On MAC:
+brew install gnu-sed
+
+echo -----BEGIN PRIVATE KEY----- > blah2.key
+gsed -e "s/\S\{64\}/&\n/g"
+echo -----END PRIVATE KEY----- >> blah2.key
