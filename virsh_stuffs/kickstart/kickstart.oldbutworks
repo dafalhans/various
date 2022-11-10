@@ -1,0 +1,23 @@
+lang en_US
+keyboard --xlayouts='us'
+timezone America/New_York --isUtc
+rootpw redhat
+user --name=student --plaintext --password=student
+#platform x86_64
+reboot
+#url --url=http://192.168.122.1:8080
+bootloader --append="rhgb quiet crashkernel=1G-4G:192M,4G-64G:256M,64G-:512M"
+zerombr
+clearpart --all --initlabel
+autopart
+auth --passalgo=sha512 --useshadow
+selinux --enforcing
+firewall --enabled
+firstboot --disable
+%post
+echo "rhel 9.1" >> /etc/motd
+%end
+%packages
+@^server-product-environment
+@development
+%end
