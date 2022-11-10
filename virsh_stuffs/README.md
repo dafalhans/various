@@ -64,3 +64,16 @@ for server in ansible-runner server{a..d}; do sudo virsh dumpxml $server \
     192.168.122.73 serverc
     192.168.122.17 serverd
 ````
+
+## add the IP address and hostname to /etc/hosts
+Delete it first of it's already there
+
+````sh
+sudo sed -E -i '/.*server.*|.*ansible-runner.*/d' /etc/hosts
+
+for server in ansible-runner server{a..d}; do sudo virsh dumpxml $server \
+| grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}' \
+| xargs -I '{}' sh -c 'arp -a | grep {}' | grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}" \
+| xargs -I '{}' echo "{} $server" \
+| sudo  tee --append /etc/hosts; done
+````
