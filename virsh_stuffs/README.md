@@ -49,7 +49,14 @@ The `--extra-args="inst.ks"` is required to make this work
 ## find IP address based on Mac Address in ARP cache
 
 ````sh
-    for server in ansible-runner server{a..d}; do sudo virsh dumpxml $server | grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}' | xargs -I '{}' sh -c 'arp -a | grep {}' | grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}" | xargs -I '{}' echo "{} $server"; done
+for server in ansible-runner server{a..d}; do sudo virsh dumpxml $server \
+| grep -o -E '([[:xdigit:]]{1,2}:){5}[[:xdigit:]]{1,2}' \
+| xargs -I '{}' sh -c 'arp -a | grep {}' | grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}" \
+| xargs -I '{}' echo "{} $server"; done
+
+````
+
+````
     [sudo] password for hans: 
     192.168.122.101 ansible-runner
     192.168.122.127 servera
