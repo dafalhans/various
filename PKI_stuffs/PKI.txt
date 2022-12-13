@@ -6,6 +6,10 @@ gsed -e "s/\S\{64\}/&\n/g"
 echo -----END PRIVATE KEY----- >> blah2.key
 
 
+Or:
+fold -w 64 example.crt > new-example.crt
+
+
 
 sign-encrypt-difference-with-openssl.sh
 #!/bin/sh
