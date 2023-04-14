@@ -1,0 +1,24 @@
+curl -L -o /tmp/terraform.zip https://releases.hashicorp.com/terraform/0.14.0/terraform_0.14.0_linux_amd64.zip ; unzip /tmp/terraform.zip -d /tmp ; sudo mv /tmp/terraform /usr/local/bin/terraform; rm -rf /tmp/terraform.zip
+
+ export target=/usr/local/bin; curl -L -o - https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/latest/openshift-client-linux.tar.gz |sudo tar -C $target -xvzf - oc
+
+export target=/usr/local/bin; curl -L -o - https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/latest/openshift-client-linux.tar.gz | sudo tar -C $target -xvzf - oc
+
+export target=/usr/local/bin; sudo curl -L -o $target/kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" ; sudo chmod +x $target/kubectl
+
+export target=/usr/local/bin; curl -L -o - https://github.com/IBM/cloud-pak-cli/releases/latest/download/cloudctl-linux-amd64.tar.gz | sudo tar -C $target -xvzf - cloudctl-linux-amd64; sudo mv $target/cloudctl-linux-amd64 $target/cloudctl
+
+export target=/usr/local/bin; curl -L -o - https://get.helm.sh/helm-v3.5.4-linux-amd64.tar.gz | sudo tar -C $target -xvzf - linux-amd64/helm ; sudo mv $target/linux-amd64/helm $target/helm3 ; sudo rm -rf $target/linux-amd64
+
+export target=/usr/local/bin; curl -L -o - https://github.com/vmware/govmomi/releases/download/v0.25.0/govc_Linux_x86_64.tar.gz | sudo tar -C $target -xvzf - govc
+
+sudo yum install -y git
+
+
+
+
+
+pip install pyvmomi
+pip install --upgrade git+https://github.com/vmware/vsphere-automation-sdk-python.git
+
+vSphere certs: https://vsca.lab.local/certs/download.zip

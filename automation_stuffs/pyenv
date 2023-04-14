@@ -1,0 +1,49 @@
+pyenv local 2.7.18
+ pyenv activate --unset
+ pyenv local 2.7.18
+ python version
+ pyenv install 2.7.18
+ pyenv local 2.7.18
+ python -version
+ python
+ which python
+ history | grep virtualenv
+ pyenv virtualenv 2.7.18 automation27
+ pyenv local automation27
+ python 
+ pip install requests
+ pip install python-ldap
+ python SAMLIPConfig.py -configure All
+ cd Automation
+ python SAMLIPConfig.py -configure All
+ pyenv shell 3.10.2
+ pyenv activate automation27
+ cd Automation
+ SAMLSPConfig.py -configure All
+ python SAMLSPConfig.py -configure All
+ pip install jsonconfigparser
+ python SAMLSPConfig.py -configure All
+ python ImportPartners.py -import IdP_Partner_Metadata
+ python ImportPartners.py -import SP_Partner_Metadata
+ ssh admin@192.168.252.104
+ python OIDCOPConfig.py –configure All
+ python SAMLIPConfig.py –configure Macros\n
+ python OIDCOPConfig.py –configure Definition
+ python OIDCOPConfig.py –configure Client
+ OIDCOPConfig.py -configure WebSEAL_Conf_OIDC_OP
+ python OIDCOPConfig.py -configure WebSEAL_Conf_OIDC_OP
+ python OIDCRPConfig.py -configure All
+ python OIDCRPConfig.py –configure Upload_Mapping_Rules
+ python OIDCRPConfig.py -configure RPFederation
+ python OIDCRPConfig.py -configure RPPartner
+ python OIDCRPConfig.py -configure POC_For_OIDC
+ python OIDCRPConfig.py -configure Add_Signer_Cert
+ python OIDCRPConfig.py -configure WebSEAL_Conf_OIDC_RP
+ python OIDCClaims.py -configure All
+ python DynamicClientRegistration.py -configure All -Bearer e8D1tkn3rbDe1moLBCI4
+ python OIDCClaims.py -configure All
+ python DynamicClientRegistration.py -configure All -Bearer RfDILcSuirtI9DZfeStm
+ python DynamicClientRegistration.py -configure All -Bearer fmCK5HF3krkakNZYNJ7P
+ python STSTest.py –configure All
+ python UploadIPMappingRule.py –configure HttpClientMappingRule
+ python UploadIPMappingRule.py –configure ExternalHttpCallout

@@ -1,0 +1,7 @@
+/usr/local/bin/pg_dump -h localhost -p 2020  config -U www-data -f /tmp/config.db
+
+/usr/local/bin/psql -h localhost -U www-data -p 2021 config < /tmp/config.db
+
+
+/usr/local/bin/pg_dump
+/usr/local/bin/psql

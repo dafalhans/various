@@ -48,6 +48,12 @@ echo "done\n"
 
 
 
+https://brianchildress.co/convert-x509-certificate-from-metadata/
+Parse single line certificate to correct format
+
+
+
+
 #obtaining a certificate chain
 ==============================
 
@@ -57,3 +63,7 @@ do wget $(openssl x509 -in $cert -noout -text | grep 'CA Issuers' | awk '{print 
 cat intermediate.txt >> chain.pem;rm $cert intermediate.txt;done && \
 for cert in *.pem; do wget $(openssl x509 -in $cert -noout -text | grep 'CA Issuers' | awk '{print substr($4,5)}') -O root.txt; \
 cat root.txt >> chain.pem;rm root.txt;done
+
+
+
+./xmlsectool.sh --verifySignature --certificate ../cert.cer --inFile ../xyz.xml

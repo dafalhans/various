@@ -1,0 +1,66 @@
+
+Remove new lines (\n) from files, for specific patterns
+
+sed -e :a -e '$!N; s/\n\(AND.*$\)/ \1/;ta' -e 'P;D' Rules_File_test2.csv >> Rules_File_sed_newline.csv
+
+sed ':a;  $!N;  s/\n/string/;  ta'
+     ---  ----  -------------  --
+      |     |        |          |--> go back (`t`) to `a`
+      |     |        |-------------> substitute newlines with `string`
+      |     |----------------------> If this is not the last line (`$!`), append the 
+      |                              next line to the pattern space.
+      |----------------------------> Create the label `a`.
+
+
+
+
+
+
+=========
+
+
+Get Epoch on Mac OS X
+
+(base) ➜   date -j -f "%a %b %d %T %Z %Y" "`date`" "+%s"
+1631272287
+
+Get Epoch minus 1 hour on Mac OS X
+(base) ➜  date -j -f "%a %b %d %T %Z %Y" "`date -v-60M`" "+%s"
+1631268690
+
+
+
+
+=========
+
+Disk Full
+[root@bastion /]# sudo du -hsx /* | sort -rh | head -n 40
+du: cannot access '/proc/127725/task/127725/fd/4': No such file or directory
+du: cannot access '/proc/127725/task/127725/fdinfo/4': No such file or directory
+du: cannot access '/proc/127725/fd/4': No such file or directory
+du: cannot access '/proc/127725/fdinfo/4': No such file or directory
+9.1G	/var
+4.3G	/root
+2.4G	/usr
+572M	/opt
+211M	/boot
+100M	/run
+25M	/etc
+12K	/home
+0	/tmp
+0	/sys
+0	/srv
+0	/sbin
+0	/proc
+0	/mnt
+0	/media
+0	/lib64
+0	/lib
+0	/dev
+0	/bin
+
+Even when deleting files, maybe still not fixed, see
+https://access.redhat.com/solutions/2316
+
+
+=========
